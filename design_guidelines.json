@@ -1,0 +1,79 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) - Dark Mode Variant for Developer Tools",
+  "typography": {
+    "heading_font": "Chivo",
+    "body_font": "IBM Plex Sans",
+    "mono_font": "JetBrains Mono",
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight",
+      "body": "text-base leading-relaxed text-neutral-300",
+      "code": "font-mono text-sm tracking-tight text-neutral-200"
+    }
+  },
+  "colors": {
+    "background": "bg-[#0A0A0A]",
+    "surface": "bg-[#121212]",
+    "surface_hover": "hover:bg-[#1A1A1A]",
+    "border": "border-white/10",
+    "border_hover": "hover:border-white/20",
+    "text_primary": "text-white",
+    "text_secondary": "text-neutral-400",
+    "accent_primary": "bg-[#007AFF]",
+    "accent_primary_hover": "hover:bg-[#005bb5]",
+    "accent_primary_text": "text-white",
+    "success_text": "text-[#22C55E]",
+    "code_background": "bg-black",
+    "code_border": "border-[#222222]"
+  },
+  "layout_and_spacing": {
+    "container": "max-w-5xl mx-auto px-6 py-20 lg:py-32",
+    "section_gap": "gap-24",
+    "card_padding": "p-8 md:p-12",
+    "grid_strategy": "Grid Borders (The 'Technical' Look). Use 1px subtle borders to expose the skeleton, flat backgrounds, no soft shadows.",
+    "alignment": "Paragraphs and dense content must be left-aligned. Align code blocks relative to container."
+  },
+  "components": {
+    "hero": "Left-aligned strong heading. Badge with 'Status: Active' in technical mono font.",
+    "cards": "Flat background, 1px subtle border (border-white/10), no shadow. Hover: slight border color darken/lighten. Must have generous internal padding (p-8).",
+    "code_blocks": "Black background, subtle border, distinct syntax highlighting colors (e.g., green for strings, blue for keywords). MUST include a 'Copy to Clipboard' button in the top right corner with hover state.",
+    "tabs": "Shadcn Tabs component for switching between 'curl' and 'fetch' examples. Customize height and active state indicator (e.g., sharp bottom border).",
+    "toast": "Sonner for 'Copied!' notifications. Dark themed."
+  },
+  "interactions_and_motion": {
+    "hover_states": "All buttons and interactive cards MUST have explicit hover text/bg color changes.",
+    "transitions": "transition-colors duration-200 ease-in-out",
+    "copy_action": "Icon change from Clipboard to Check on success, plus toast notification."
+  },
+  "accessibility": {
+    "contrast": "Ensure text over dark backgrounds meets APCA standards. Use text-neutral-400 for secondary, text-white for primary.",
+    "focus": "focus:outline-none focus:ring-2 focus:ring-[#007AFF] focus:ring-offset-2 focus:ring-offset-[#0A0A0A]",
+    "testing": "All interactive elements MUST include a data-testid attribute (e.g., data-testid='copy-curl-button')."
+  },
+  "icons": {
+    "library": "lucide-react",
+    "usage": "Use precise technical icons (e.g., Terminal, Shield, Link, Copy, Check)."
+  },
+  "media": {
+    "hero_bg": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/79692cdf-ec35-4807-895b-511ff024b6eb/images/731675a16455a95f021bc331bf75cc8134d3d674180f0d2faf522eca02660e56.png",
+      "description": "Dark mode abstract background for developer tool, deep black and indigo gradient. Use as a very subtle, low-opacity (opacity-20) absolute background element in the hero section to break up the solid black, with a mask-image to fade out.",
+      "category": "background"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Build a single-page React app (App.jsx) with Tailwind CSS.",
+    "Implement a dark theme using the specified color palette (bg-[#0A0A0A] base).",
+    "Set up Google Fonts for Chivo (headings), IBM Plex Sans (body), and JetBrains Mono (code).",
+    "The page must contain 4 main sections: 1. Hero / Intro, 2. Authentication (Bearer Token), 3. URL Format, 4. Code Examples (Tabs for curl/fetch).",
+    "Use lucide-react for icons.",
+    "Implement Shadcn Tabs for the Code Examples section.",
+    "Implement Sonner for copy-to-clipboard toast notifications.",
+    "All code blocks must be easily readable with syntax-like colors and a copy button.",
+    "Add data-testid attributes to all buttons, tabs, and input/copy areas.",
+    "Apply the hero_bg image as a subtle background behind the hero section with low opacity.",
+    "Ensure cross-origin resource sharing (CORS) details are mentioned in the text (the proxy forwards Authorization headers)."
+  ]
+}
