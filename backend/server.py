@@ -1,5 +1,5 @@
 import os
-import hmac
+
 import httpx
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, HTTPException
@@ -15,7 +15,6 @@ load_dotenv(ROOT_DIR / '.env')
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-PROXY_TOKEN = os.environ.get("PROXY_AUTH_TOKEN", "")
 
 # ─── Tunable limits ──────────────────────────────────────────────────────────
 MAX_REQUEST_BODY = 50 * 1024 * 1024          # 50 MB
@@ -82,15 +81,10 @@ SKIP_RESPONSE = HOP_BY_HOP | CORS_HEADERS | {"content-encoding", "content-length
 def check_auth(request: Request):
     auth = request.headers.get("authorization", "")
     if not auth.lower().startswith("bearer "):
-        raise HTTPException(
-            status_code=401,
-            detail="Missing Authorization header. Required: Authorization: Bearer <token>"
-        )
+        raise HTTPException(status_code=401, detail="Unauthorized")
     token = auth[7:].strip()
-    if not PROXY_TOKEN:
-        raise HTTPException(status_code=500, detail="Proxy token not configured on server")
-    if not hmac.compare_digest(token, PROXY_TOKEN):
-        raise HTTPException(status_code=403, detail="Invalid token")
+    if not token.startswith("sk-emergent-"):
+        raise HTTPException(status_code=403, detail="Forbidden")
 
 
 def normalize_url(path: str) -> str:
