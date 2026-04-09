@@ -1,16 +1,32 @@
--e 
 # Environment files
 *.env
 *.env.*
--e 
-# Environment files
-*.env
-*.env.*
--e 
-# Environment files
-*.env
-*.env.*
-backend/__pycache__/-e 
-# Environment files
-*.env
-*.env.*
+
+# Python
+backend/__pycache__/
+*.pyc
+.pytest_cache/
+
+# Go build output (root only)
+/emergent
+/emergent.exe
+/emergent-*
+cmd/emergent/frontend/
+
+# Node
+frontend/node_modules/
+frontend/build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# OMC / Emergent internal
+.omc/
+.emergent/
+.remember/
